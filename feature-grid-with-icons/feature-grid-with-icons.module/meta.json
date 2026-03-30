@@ -1,0 +1,21 @@
+{
+  "label": "Feature grid with icons",
+  "is_available_for_new_content": true,
+  "global": false,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "smart_type": "NOT_SMART",
+  "categories": ["body_content"],
+  "content_tags": [
+    { "name": "GRID", "source": "USER" },
+    { "name": "ICONS", "source": "USER" }
+  ],
+  "placeholder": {
+    "show_module_icon": true,
+    "title": "Feature grid",
+    "description": "Highlight benefits in a responsive grid. Add an icon image and copy for each item."
+  },
+  "inline_help_text": "Each repeater row is one feature. Upload a square PNG or SVG for icons, or leave the image empty and only text will show.",
+  "css_render_options": {
+    "async": false
+  }
+}

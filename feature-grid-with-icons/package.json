@@ -1,0 +1,13 @@
+{
+  "name": "feature-grid-with-icons",
+  "private": true,
+  "scripts": {
+    "hs": "node \"./node_modules/@hubspot/cli/bin/hs.js\"",
+    "hubspot:auth": "node \"./node_modules/@hubspot/cli/bin/hs.js\" account auth",
+    "hubspot:upload": "node \"./node_modules/@hubspot/cli/bin/hs.js\" cms upload feature-grid-with-icons.module /feature-grid-with-icons.module",
+    "hubspot:watch": "node \"./node_modules/@hubspot/cli/bin/hs.js\" cms watch feature-grid-with-icons.module /feature-grid-with-icons.module"
+  },
+  "devDependencies": {
+    "@hubspot/cli": "8.2.0"
+  }
+}

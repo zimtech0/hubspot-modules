@@ -1,0 +1,120 @@
+{# Dynamic testimonial slider — HubL + HTML #}
+{% set opts = module.slider_options %}
+{% set scheme = opts.color_scheme|default('light') %}
+{% set autoplay_ms = (opts.autoplay_speed|default(6)|int) * 1000 %}
+{% set slide_count = module.testimonials|length %}
+{% set region_label = 'Testimonials' %}
+{% if module.section_heading and module.section_heading|trim %}
+  {% set region_label = module.section_heading|trim %}
+{% endif %}
+
+<section
+  class="dts dts--{{ scheme }}{% if not opts.show_arrows %} dts--hide-arrows{% endif %}{% if not opts.show_dots %} dts--hide-dots{% endif %}"
+  data-dts-autoplay="{{ opts.autoplay ? 'true' : 'false' }}"
+  data-dts-interval="{{ autoplay_ms }}"
+  data-dts-pause-hover="{{ opts.pause_on_hover ? 'true' : 'false' }}"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ region_label|escape_attr }}"
+  tabindex="0"
+>
+  {% if module.section_heading %}
+    <header class="dts__header">
+      <h2 class="dts__heading">{% inline_text field="section_heading" value="{{ module.section_heading }}" %}</h2>
+    </header>
+  {% endif %}
+
+  <div class="dts__stage">
+    <div class="dts__viewport" aria-live="polite">
+      <div class="dts__track">
+        {% for item in module.testimonials %}
+          <article
+            class="dts__slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label="Slide {{ loop.index }} of {{ slide_count }}"
+            data-dts-index="{{ loop.index0 }}"
+            {% if not loop.first %}aria-hidden="true"{% endif %}
+          >
+            <div class="dts__card">
+              <div class="dts__quote">
+                {% inline_rich_text field="testimonials.quote" value="{{ item.quote }}" %}
+              </div>
+              <footer class="dts__meta">
+                {% if item.author_image.src %}
+                  <div class="dts__avatar">
+                    {% set sizeAttrs = 'width="' ~ item.author_image.width ~ '" height="' ~ item.author_image.height ~ '"' %}
+                    {% if item.author_image.size_type == 'auto' %}
+                      {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+                    {% elif item.author_image.size_type == 'auto_custom_max' %}
+                      {% set sizeAttrs = 'width="100%" height="auto" style="max-width: ' ~ item.author_image.max_width ~ 'px; max-height: ' ~ item.author_image.max_height ~ 'px"' %}
+                    {% endif %}
+                    <img
+                      class="dts__avatar-img"
+                      src="{{ item.author_image.src }}"
+                      alt="{{ item.author_image.alt|escape_attr }}"
+                      loading="lazy"
+                      decoding="async"
+                      {{ sizeAttrs }}
+                    >
+                  </div>
+                {% endif %}
+                <div class="dts__author">
+                  {% if item.author_name %}
+                    <cite class="dts__name">{% inline_text field="testimonials.author_name" value="{{ item.author_name }}" %}</cite>
+                  {% endif %}
+                  {% if item.author_title or item.company_name %}
+                    <p class="dts__role">
+                      {% if item.author_title %}
+                        <span>{% inline_text field="testimonials.author_title" value="{{ item.author_title }}" %}</span>
+                      {% endif %}
+                      {% if item.author_title and item.company_name %}<span class="dts__sep" aria-hidden="true">·</span>{% endif %}
+                      {% if item.company_name %}
+                        <span>{% inline_text field="testimonials.company_name" value="{{ item.company_name }}" %}</span>
+                      {% endif %}
+                    </p>
+                  {% endif %}
+                </div>
+              </footer>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if slide_count > 1 %}
+      <div class="dts__controls">
+        <button
+          type="button"
+          class="dts__btn dts__btn--prev"
+          aria-label="Previous testimonial"
+          data-dts-prev
+        >
+          <span class="dts__btn-icon" aria-hidden="true">‹</span>
+        </button>
+        <button
+          type="button"
+          class="dts__btn dts__btn--next"
+          aria-label="Next testimonial"
+          data-dts-next
+        >
+          <span class="dts__btn-icon" aria-hidden="true">›</span>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if slide_count > 1 %}
+    <nav class="dts__dots" aria-label="Testimonial slides" data-dts-dots-nav>
+      {% for item in module.testimonials %}
+        <button
+          type="button"
+          class="dts__dot{% if loop.first %} is-active{% endif %}"
+          aria-label="Go to slide {{ loop.index }}"
+          {% if loop.first %}aria-current="true"{% endif %}
+          data-dts-dot="{{ loop.index0 }}"
+        ></button>
+      {% endfor %}
+    </nav>
+  {% endif %}
+</section>

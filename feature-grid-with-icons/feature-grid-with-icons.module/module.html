@@ -1,0 +1,89 @@
+{# Feature grid with icons — HubL + HTML #}
+{% set ls = module.layout_style %}
+{% set scheme = ls.color_scheme|default('light') %}
+{% set cols = ls.columns|default('3') %}
+{% set align = ls.card_alignment|default('left') %}
+{% set icon_shape = ls.icon_shape|default('rounded') %}
+
+<section
+  class="fgi fgi--{{ scheme }} fgi--cols-{{ cols }} fgi--align-{{ align }} fgi--icon-{{ icon_shape }}"
+  aria-label="{% if module.section_heading and module.section_heading|trim %}{{ module.section_heading|trim|escape_attr }}{% else %}Features{% endif %}"
+>
+  {% if module.section_heading and module.section_heading|trim %}
+    <header class="fgi__header fgi__header--{{ align }}">
+      <h2 class="fgi__heading">{% inline_text field="section_heading" value="{{ module.section_heading }}" %}</h2>
+      {% if module.section_intro %}
+        <div class="fgi__intro">
+          {% inline_rich_text field="section_intro" value="{{ module.section_intro }}" %}
+        </div>
+      {% endif %}
+    </header>
+  {% elif module.section_intro %}
+    <header class="fgi__header fgi__header--{{ align }}">
+      <div class="fgi__intro fgi__intro--solo">
+        {% inline_rich_text field="section_intro" value="{{ module.section_intro }}" %}
+      </div>
+    </header>
+  {% endif %}
+
+  <ul class="fgi__grid">
+    {% for item in module.features %}
+      {% set raw_href = item.link_url.url.href|default('') %}
+      {% set has_link = raw_href and raw_href|trim %}
+      {% set card_href = raw_href %}
+      {% if has_link and item.link_url.url.type is equalto 'EMAIL_ADDRESS' %}
+        {% set card_href = 'mailto:' ~ raw_href %}
+      {% endif %}
+      <li class="fgi__cell">
+        {% if has_link %}
+          <a
+            class="fgi__card fgi__card--link"
+            href="{{ card_href }}"
+            {% if item.link_url.open_in_new_tab %}target="_blank"{% endif %}
+            {% if item.link_url.open_in_new_tab and item.link_url.no_follow %}
+              rel="noopener noreferrer nofollow"
+            {% elif item.link_url.open_in_new_tab %}
+              rel="noopener noreferrer"
+            {% elif item.link_url.no_follow %}
+              rel="nofollow"
+            {% endif %}
+            {% if item.link_label %}aria-label="{{ item.link_label|escape_attr }}"{% endif %}
+          >
+        {% else %}
+          <div class="fgi__card">
+        {% endif %}
+          {% if item.icon.src %}
+            <div class="fgi__icon-wrap" aria-hidden="true">
+              {% set sizeAttrs = 'width="' ~ item.icon.width ~ '" height="' ~ item.icon.height ~ '"' %}
+              {% if item.icon.size_type == 'auto' %}
+                {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+              {% elif item.icon.size_type == 'auto_custom_max' %}
+                {% set sizeAttrs = 'width="100%" height="auto" style="max-width: ' ~ item.icon.max_width ~ 'px; max-height: ' ~ item.icon.max_height ~ 'px"' %}
+              {% endif %}
+              <img
+                class="fgi__icon"
+                src="{{ item.icon.src }}"
+                alt="{{ item.icon.alt|escape_attr }}"
+                loading="lazy"
+                decoding="async"
+                {{ sizeAttrs }}
+              >
+            </div>
+          {% endif %}
+          <div class="fgi__body">
+            <h3 class="fgi__title">{% inline_text field="features.title" value="{{ item.title }}" %}</h3>
+            {% if item.description %}
+              <div class="fgi__desc">
+                {% inline_rich_text field="features.description" value="{{ item.description }}" %}
+              </div>
+            {% endif %}
+          </div>
+        {% if has_link %}
+          </a>
+        {% else %}
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</section>

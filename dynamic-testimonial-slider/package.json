@@ -1,0 +1,13 @@
+{
+  "name": "dynamic-testimonial-slider",
+  "private": true,
+  "scripts": {
+    "hs": "node \"./node_modules/@hubspot/cli/bin/hs.js\"",
+    "hubspot:auth": "node \"./node_modules/@hubspot/cli/bin/hs.js\" account auth",
+    "hubspot:upload": "node \"./node_modules/@hubspot/cli/bin/hs.js\" cms upload dynamic-testimonial-slider.module /dynamic-testimonial-slider.module",
+    "hubspot:watch": "node \"./node_modules/@hubspot/cli/bin/hs.js\" cms watch dynamic-testimonial-slider.module /dynamic-testimonial-slider.module"
+  },
+  "devDependencies": {
+    "@hubspot/cli": "8.2.0"
+  }
+}

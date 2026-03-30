@@ -1,0 +1,166 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Section heading",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "What our clients say",
+    "tab": "CONTENT",
+    "help_text": "Shown above the slider. Leave empty to hide."
+  },
+  {
+    "id": "testimonials",
+    "name": "testimonials",
+    "label": "Testimonials",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "children": [
+      {
+        "id": "quote",
+        "name": "quote",
+        "label": "Quote",
+        "required": true,
+        "locked": false,
+        "type": "richtext",
+        "default": "<p>We saw a real lift in conversions after launch. The team was clear, fast, and easy to work with.</p>",
+        "tab": "CONTENT"
+      },
+      {
+        "id": "author_name",
+        "name": "author_name",
+        "label": "Name",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Alex Morgan",
+        "tab": "CONTENT"
+      },
+      {
+        "id": "author_title",
+        "name": "author_title",
+        "label": "Title / role",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Marketing Director",
+        "tab": "CONTENT"
+      },
+      {
+        "id": "company_name",
+        "name": "company_name",
+        "label": "Company",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "Northwind Co.",
+        "tab": "CONTENT"
+      },
+      {
+        "id": "author_image",
+        "name": "author_image",
+        "label": "Photo",
+        "required": false,
+        "locked": false,
+        "type": "image",
+        "resizable": true,
+        "responsive": true,
+        "show_loading": true,
+        "default": {
+          "size_type": "auto",
+          "src": "",
+          "alt": ""
+        },
+        "tab": "CONTENT"
+      }
+    ],
+    "occurrence": {
+      "min": 1,
+      "max": 24,
+      "default": 3,
+      "sorting_label_field": "author_name"
+    }
+  },
+  {
+    "id": "slider_options",
+    "name": "slider_options",
+    "label": "Slider options",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "tab": "STYLE",
+    "expanded": false,
+    "children": [
+      {
+        "id": "color_scheme",
+        "name": "color_scheme",
+        "label": "Color scheme",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "choices": [
+          ["light", "Light"],
+          ["dark", "Dark"]
+        ],
+        "default": "light",
+        "tab": "STYLE"
+      },
+      {
+        "id": "autoplay",
+        "name": "autoplay",
+        "label": "Autoplay",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": true,
+        "tab": "STYLE"
+      },
+      {
+        "id": "autoplay_speed",
+        "name": "autoplay_speed",
+        "label": "Autoplay interval (seconds)",
+        "required": false,
+        "locked": false,
+        "type": "number",
+        "min": 2,
+        "max": 60,
+        "default": 6,
+        "tab": "STYLE"
+      },
+      {
+        "id": "pause_on_hover",
+        "name": "pause_on_hover",
+        "label": "Pause autoplay on hover",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": true,
+        "tab": "STYLE"
+      },
+      {
+        "id": "show_arrows",
+        "name": "show_arrows",
+        "label": "Show previous / next arrows",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": true,
+        "tab": "STYLE"
+      },
+      {
+        "id": "show_dots",
+        "name": "show_dots",
+        "label": "Show dot indicators",
+        "required": false,
+        "locked": false,
+        "type": "boolean",
+        "default": true,
+        "tab": "STYLE"
+      }
+    ]
+  }
+]

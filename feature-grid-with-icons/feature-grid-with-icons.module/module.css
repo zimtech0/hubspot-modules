@@ -1,0 +1,236 @@
+/* Feature grid with icons — aligned with Dynamic testimonial slider tokens */
+
+.fgi {
+  --fgi-radius: 16px;
+  --fgi-gap: clamp(1rem, 3vw, 1.5rem);
+  --fgi-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  --fgi-accent: #2563eb;
+  --fgi-accent-soft: rgba(37, 99, 235, 0.12);
+  --fgi-surface: #ffffff;
+  --fgi-border: rgba(15, 23, 42, 0.08);
+  --fgi-text: #0f172a;
+  --fgi-muted: #64748b;
+  --fgi-heading: #1e293b;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+  color: var(--fgi-text);
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.fgi--dark {
+  --fgi-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --fgi-accent: #60a5fa;
+  --fgi-accent-soft: rgba(96, 165, 250, 0.15);
+  --fgi-surface: #0f172a;
+  --fgi-border: rgba(255, 255, 255, 0.12);
+  --fgi-text: #f1f5f9;
+  --fgi-muted: #94a3b8;
+  --fgi-heading: #f8fafc;
+}
+
+.fgi__header {
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.fgi__header--center {
+  text-align: center;
+}
+
+.fgi__header--left {
+  text-align: left;
+}
+
+.fgi__heading {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--fgi-heading);
+}
+
+.fgi__intro {
+  margin: 0;
+  max-width: 62ch;
+  color: var(--fgi-muted);
+  font-size: clamp(1rem, 2vw, 1.05rem);
+}
+
+.fgi__header--center .fgi__intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fgi__intro--solo {
+  max-width: none;
+}
+
+.fgi__intro p {
+  margin: 0 0 0.65rem;
+}
+
+.fgi__intro p:last-child {
+  margin-bottom: 0;
+}
+
+.fgi__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--fgi-gap);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .fgi--cols-2 .fgi__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fgi--cols-3 .fgi__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fgi--cols-4 .fgi__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 960px) {
+  .fgi--cols-3 .fgi__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .fgi--cols-4 .fgi__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.fgi__cell {
+  margin: 0;
+  min-width: 0;
+}
+
+.fgi__card {
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: var(--fgi-radius);
+  background: var(--fgi-surface);
+  border: 1px solid var(--fgi-border);
+  box-shadow: var(--fgi-shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.fgi__card--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.fgi__card--link:hover {
+  border-color: var(--fgi-accent-soft);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
+}
+
+.fgi--dark .fgi__card--link:hover {
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+}
+
+.fgi__card--link:focus-visible {
+  outline: 2px solid var(--fgi-accent);
+  outline-offset: 3px;
+}
+
+.fgi--align-center .fgi__card {
+  align-items: center;
+  text-align: center;
+}
+
+.fgi--align-left .fgi__card {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.fgi__icon-wrap {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fgi-accent-soft);
+  border: 1px solid var(--fgi-border);
+}
+
+.fgi--icon-circle .fgi__icon-wrap {
+  border-radius: 50%;
+}
+
+.fgi--icon-rounded .fgi__icon-wrap {
+  border-radius: 14px;
+}
+
+.fgi--icon-none .fgi__icon-wrap {
+  background: transparent;
+  border: none;
+  width: auto;
+  height: auto;
+  min-height: 48px;
+}
+
+.fgi__icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.fgi--icon-none .fgi__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.fgi__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.fgi__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--fgi-heading);
+}
+
+.fgi__desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--fgi-muted);
+}
+
+.fgi__desc p {
+  margin: 0 0 0.5rem;
+}
+
+.fgi__desc p:last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fgi__card--link {
+    transition: none;
+  }
+
+  .fgi__card--link:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,181 @@
+[
+  {
+    "id": "section_heading",
+    "name": "section_heading",
+    "label": "Section heading",
+    "required": false,
+    "locked": false,
+    "type": "text",
+    "default": "Why teams choose us",
+    "tab": "CONTENT",
+    "help_text": "Shown above the grid. Leave empty to hide."
+  },
+  {
+    "id": "section_intro",
+    "name": "section_intro",
+    "label": "Intro",
+    "required": false,
+    "locked": false,
+    "type": "richtext",
+    "default": "<p>Short supporting copy for this section.</p>",
+    "tab": "CONTENT",
+    "help_text": "Optional paragraph under the heading."
+  },
+  {
+    "id": "features",
+    "name": "features",
+    "label": "Features",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "tab": "CONTENT",
+    "expanded": true,
+    "children": [
+      {
+        "id": "icon",
+        "name": "icon",
+        "label": "Icon image",
+        "required": false,
+        "locked": false,
+        "type": "image",
+        "resizable": true,
+        "responsive": true,
+        "show_loading": true,
+        "default": {
+          "size_type": "auto",
+          "src": "",
+          "alt": ""
+        },
+        "tab": "CONTENT",
+        "help_text": "Square icons (e.g. 64–128px) work best."
+      },
+      {
+        "id": "title",
+        "name": "title",
+        "label": "Title",
+        "required": true,
+        "locked": false,
+        "type": "text",
+        "default": "Feature title",
+        "tab": "CONTENT"
+      },
+      {
+        "id": "description",
+        "name": "description",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "default": "<p>Brief explanation of this benefit or capability.</p>",
+        "tab": "CONTENT"
+      },
+      {
+        "id": "link_url",
+        "name": "link_url",
+        "label": "Link",
+        "required": false,
+        "locked": false,
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"],
+        "default": {
+          "url": {
+            "type": "EXTERNAL",
+            "href": "",
+            "content_id": null
+          },
+          "open_in_new_tab": false,
+          "no_follow": false
+        },
+        "tab": "CONTENT",
+        "help_text": "Optional. Makes the whole card clickable when a URL is set."
+      },
+      {
+        "id": "link_label",
+        "name": "link_label",
+        "label": "Link label (accessibility)",
+        "required": false,
+        "locked": false,
+        "type": "text",
+        "default": "",
+        "tab": "CONTENT",
+        "help_text": "Describe the destination for screen readers, e.g. “Learn more about pricing”."
+      }
+    ],
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "default": 4,
+      "sorting_label_field": "title"
+    }
+  },
+  {
+    "id": "layout_style",
+    "name": "layout_style",
+    "label": "Layout & style",
+    "required": false,
+    "locked": false,
+    "type": "group",
+    "tab": "STYLE",
+    "expanded": true,
+    "children": [
+      {
+        "id": "color_scheme",
+        "name": "color_scheme",
+        "label": "Color scheme",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "choices": [
+          ["light", "Light"],
+          ["dark", "Dark"]
+        ],
+        "default": "light",
+        "tab": "STYLE"
+      },
+      {
+        "id": "columns",
+        "name": "columns",
+        "label": "Columns (desktop)",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "choices": [
+          ["2", "2"],
+          ["3", "3"],
+          ["4", "4"]
+        ],
+        "default": "3",
+        "tab": "STYLE"
+      },
+      {
+        "id": "card_alignment",
+        "name": "card_alignment",
+        "label": "Card text alignment",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "choices": [
+          ["left", "Left"],
+          ["center", "Center"]
+        ],
+        "default": "left",
+        "tab": "STYLE"
+      },
+      {
+        "id": "icon_shape",
+        "name": "icon_shape",
+        "label": "Icon frame",
+        "required": false,
+        "locked": false,
+        "type": "choice",
+        "choices": [
+          ["circle", "Circle"],
+          ["rounded", "Rounded square"],
+          ["none", "No frame"]
+        ],
+        "default": "rounded",
+        "tab": "STYLE"
+      }
+    ]
+  }
+]

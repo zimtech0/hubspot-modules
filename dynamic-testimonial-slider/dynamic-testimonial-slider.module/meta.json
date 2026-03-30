@@ -1,0 +1,26 @@
+{
+  "label": "Dynamic testimonial slider",
+  "is_available_for_new_content": true,
+  "global": false,
+  "content_types": ["LANDING_PAGE", "SITE_PAGE", "BLOG_POST", "BLOG_LISTING"],
+  "smart_type": "NOT_SMART",
+  "categories": ["body_content"],
+  "content_tags": [
+    { "name": "SLIDER", "source": "USER" },
+    { "name": "TEXT", "source": "USER" }
+  ],
+  "placeholder": {
+    "show_module_icon": true,
+    "title": "Testimonials",
+    "description": "Add quotes in the repeater. Visitors can use arrows, dots, or swipe; optional autoplay."
+  },
+  "inline_help_text": "Each repeater item is one slide. Adjust Slider options for autoplay, controls, and layout.",
+  "css_render_options": {
+    "async": false
+  },
+  "js_render_options": {
+    "position": "footer",
+    "async": false,
+    "defer": true
+  }
+}
